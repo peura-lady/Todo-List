@@ -22,9 +22,9 @@ function Todos() {
     }
 
     const columns = [
-        {field: 'desc', sortable: true, filter: true},
-        {field: 'date', sortable: true, filter: true},
-        {field: 'priority', sortable: true, filter: true, 
+        {field: 'desc', sortable: true, filter: true, floatingFilter: true},
+        {field: 'date', sortable: true, filter: true, floatingFilter: true},
+        {field: 'priority', sortable: true, filter: true, floatingFilter: true, 
         cellStyle: params => params.value === "High" ? {color: 'red'} : {color: 'black'}}
     ]
 
@@ -42,6 +42,7 @@ function Todos() {
             <AgGridReact 
                 rowData={todos}
                 columnDefs={columns}
+                animateRows={true}
             />
             </div>
         </div>
