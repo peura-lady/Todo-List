@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from  'react';
+import React, { useState, useRef } from  'react';
 import {AgGridReact} from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
@@ -11,14 +12,20 @@ function Todos() {
 
     const addTodo = () => {
         setTodos([todo, ...todos]);
+        setTodo({desc:'', date:'', priority:''});
     }
+
+    const gridRef = useRef();
 
     const inputChanged = (event) => {
         setTodo({ ...todo, [event.target.name]: event.target.value });
     }
 
-    const deleteTodo = (row) => {
-       setTodos(todos.filter((todo, index) => index !== row));
+    const deleteTodo = () => {
+        if(gridRef.current.getSelectedNodes().length > 0)
+       setTodos(todos.filter((todo, index) => index !== gridRef.current.getSelectedNodes()[0].childIndex));
+       else
+       alert('Select Row First');
     }
 
     const columns = [
@@ -38,8 +45,14 @@ function Todos() {
 
 
             <button onClick={addTodo}>Add</button>
+            {/* <button onClick={() => deleteTodo()}>Delete</button> */}
+            <button onClick={deleteTodo}>Delete</button>
+
             <div className="ag-theme-material" style={{height: 400, width: 600, margin: 'auto'}}>
             <AgGridReact 
+                onGridReady={params => gridRef.current = params.api}
+                ref={gridRef}
+                rowSelection="single"
                 rowData={todos}
                 columnDefs={columns}
                 animateRows={true}
