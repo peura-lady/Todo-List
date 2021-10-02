@@ -3,7 +3,7 @@ import React from 'react';
 function TodoTable(props) {
     return (
         <div>
-                       <table>
+            <table>
                 <tbody>
                     <tr>
                         <th>Descr</th>
