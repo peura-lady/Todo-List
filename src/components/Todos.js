@@ -7,6 +7,7 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddIcon from '@mui/icons-material/Add';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
@@ -35,15 +36,22 @@ function Todos() {
             alert('Select Row First');
     }
 
+    const clearAll = () => {
+        
+    }
+
+
     const columns = [
+        
         { field: 'desc', sortable: true, filter: true, floatingFilter: true },
         { field: 'date', sortable: true, filter: true, floatingFilter: true },
         {
             field: 'priority', sortable: true, filter: true, floatingFilter: true,
             cellStyle: params => params.value === "High" ? { color: 'red' } : { color: 'black' }
         }
+        
     ]
-
+    
 
     return (
         <div style={{marginTop:20, marginBottom:20}}>
@@ -71,6 +79,14 @@ function Todos() {
                     Delete
                 </Button>
                 </Tooltip>
+
+                <Button 
+                variant="outlined" 
+                color="error" 
+                endIcon={<DeleteForeverIcon />} 
+                onClick={clearAll}>
+                    Clear
+                </Button>
                
             </Stack>
 
