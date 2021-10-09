@@ -47,7 +47,7 @@ function Todos() {
 
     return (
         <div style={{marginTop:20, marginBottom:20}}>
-            <h2>Todo list</h2>
+            <h2 style={{color:'#5072A7'}} >Todo list</h2>
             <Stack direction="row" spacing={2} justifyContent="center">
 
                 <TextField size="small" label="Description" name="desc" value={todo.desc} onChange={inputChanged} />
@@ -72,7 +72,6 @@ function Todos() {
                 </Button>
                 </Tooltip>
                
-
             </Stack>
 
             <div className="ag-theme-material" style={{ height: 400, width: 600, margin: 'auto' }}>
