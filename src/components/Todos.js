@@ -13,8 +13,9 @@ import Tooltip from '@mui/material/Tooltip';
 
 
 function Todos() {
-    const [todo, setTodo] = React.useState({ desc: '', date: '', priority: '' });
-    const [todos, setTodos] = React.useState([]);
+    // const [todo, setTodo] = React.useState({ desc: '', date: '', priority: '' });
+    const [todo, setTodo] = useState({ desc: '', date: '', priority: '' });
+    const [todos, setTodos] = useState([]);
 
     const addTodo = () => {
         setTodos([todo, ...todos]);
